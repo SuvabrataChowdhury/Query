@@ -1,19 +1,46 @@
-#!/bin/bash
+#!/bin/zsh
+
+stream=()
+
+#TODO: Move the split string logic to a library function
 
 function cmd::from(){
-	strm_src=$1
+	local string=$1
+	local delim=$2
+
+	#string=$(echo $string | tr "$delim" "\n")
 	
-	if [[ -f $strm_src ]]; then
-		cat $strm_src
-	elif [[ -d $strm_src ]]; then
-		ls $strm_src
-	else
-		echo "Invalid Stream source given"
-		return 1
-	fi
+	local length=${#string}
+
+	local subStr=""
+	
+	for (( i=0 ; i<length ; i++ ))
+	do
+		chr=${string:$i:1}
+	
+		if [[ $chr != $delim ]]
+		then
+			subStr="$subStr$chr"
+		else
+			stream+=("$subStr")
+			subStr=""
+		fi
+	done
+
+	stream+=("$subStr")
 }
 
 
-read -p "Enter source: " strm_src
-cmd::from $strm_src
+echo "Enter source:"
+read src
 
+echo "Enter delim:"
+read delim
+
+cmd::from "$src" "$delim"
+
+for item in ${stream[@]}; do
+	echo $item
+done
+
+echo ${#stream[@]}
