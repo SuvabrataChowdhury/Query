@@ -8,6 +8,7 @@ QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
 
 source $QRY_HOME/lib/expression.sh
 
+#Use: cmd::where $condition
 function cmd::where {
 	local exprss="$1"
 	
@@ -17,7 +18,7 @@ function cmd::where {
 		
 		result=()
 		
-		for item in ${stream[@]}
+		for item in "${stream[@]}"
 		do
 			echo "item: $item expression: $exprss"
 			
@@ -36,7 +37,7 @@ cmd::where "$1"
 unset QRY_HOME
 
 echo "filtered items:"
-for item in ${result[@]}
+for item in "${result[@]}"
 do
 	echo "$item"
 done

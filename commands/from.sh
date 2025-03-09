@@ -1,46 +1,38 @@
-#!/bin/zsh
+#!/bin/bash
 
-stream=()
+QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
+
+source $QRY_HOME/lib/string.sh
 
 #TODO: Move the split string logic to a library function
+#Use: Split givn stream into tokens with given delimiter
+#	cmd::from "$source" "$delim" result
+#	delim obtained from partition
 
-function cmd::from(){
-	local string=$1
+function cmd::from {
+	local from_arg=$1
 	local delim=$2
+	local result_ref=$3
 
-	#string=$(echo $string | tr "$delim" "\n")
-	
-	local length=${#string}
+	if [[ -r "$from_arg" ]]
+	then
+		string=$( cat "$from_arg" )
+		
+		split_string "$string" "$delim" "$result_ref"
 
-	local subStr=""
-	
-	for (( i=0 ; i<length ; i++ ))
-	do
-		chr=${string:$i:1}
-	
-		if [[ $chr != $delim ]]
-		then
-			subStr="$subStr$chr"
-		else
-			stream+=("$subStr")
-			subStr=""
-		fi
-	done
-
-	stream+=("$subStr")
+		echo "${!result_ref}"
+	else
+		echo "Invalid From argument"
+		exit 1
+	fi
 }
 
+##Driver code for testing
+result=""
+"$@" result
 
-echo "Enter source:"
-read src
-
-echo "Enter delim:"
-read delim
-
-cmd::from "$src" "$delim"
-
-for item in ${stream[@]}; do
-	echo $item
+echo "After splittiing"
+for token in "${result[@]}"
+do 
+	echo "$token"
 done
-
-echo ${#stream[@]}
