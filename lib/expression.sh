@@ -29,10 +29,6 @@ function evaluate_expression {
 				return 0
 			fi
 			;;
-		
-		"eq")
-		
-			#To be done
 		*)
 			echo "Invalid operator"
 			;;
@@ -59,4 +55,4 @@ function is_valid_expression {
 	return 1 #Invalid Expression
 }
 
-"$@"
+# "$@"
