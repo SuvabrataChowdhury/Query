@@ -19,8 +19,6 @@ function cmd::from {
 		string=$( cat "$from_arg" )
 		
 		split_string "$string" "$delim" "$result_ref"
-
-		echo "${!result_ref}"
 	else
 		echo "Invalid From argument"
 		exit 1
