@@ -31,13 +31,13 @@ function cmd::where {
 	fi
 }
 
-echo "This is where"
-cmd::where "$1"
+# echo "This is where"
+# cmd::where "$1"
 
-unset QRY_HOME
+# unset QRY_HOME
 
-echo "filtered items:"
-for item in "${result[@]}"
-do
-	echo "$item"
-done
+# echo "filtered items:"
+# for item in "${result[@]}"
+# do
+# 	echo "$item"
+# done
