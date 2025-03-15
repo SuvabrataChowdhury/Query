@@ -1,9 +1,11 @@
 #!/bin/bash
 
+set -e
+
 QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
 
 source $QRY_HOME/lib/string.sh
-source $QRY_HOME/commands/validators/validator.sh
+source $QRY_HOME/commands/validators/from_validator.sh
 
 #TODO: Move the split string logic to a library function
 #Use: Split givn stream into tokens with given delimiter
@@ -11,32 +13,26 @@ source $QRY_HOME/commands/validators/validator.sh
 #	delim obtained from partition
 
 function cmd::from {
-	if validate_args "$0" "$@"
-	then
-		local from_arg=$1
-		local delim=$2
-		local result_ref=$3
+	# echo "Args: $0 $@"
+	validate "$@"
+		
+	local from_arg=$1
+	local delim=$2
+	local result_ref=$3
 
-		if [[ -r "$from_arg" ]]
-		then
-			string=$( cat "$from_arg" )
+    # echo "FromArg: $from_arg Delim: $delim Result: $result_ref"
+
+	string=$( cat "$from_arg" )
 			
-			split_string "$string" "$delim" "$result_ref"
-		else
-			echo "Invalid From argument"
-			exit 1
-		fi
-	else
-		echo "Invalid "
-	fi
+	split_string "$string" "$delim" "$result_ref"
 }
 
-##Driver code for testing
-# result=""
-# "$@" result
+#Driver code for testing
+result=""
+"$@" result
 
-# echo "After splittiing"
-# for token in "${result[@]}"
-# do 
-# 	echo "$token"
-# done
+echo "After splittiing"
+for token in "${result[@]}"
+do 
+	echo "$token"
+done
