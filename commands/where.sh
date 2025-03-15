@@ -1,43 +1,48 @@
 #!/bin/bash
 
 #TODO: evaluate any/all expressions
-stream=("Hello World" " abc")
-result=()
 
 QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
 
+source $QRY_HOME/commands/validators/where_validator.sh
 source $QRY_HOME/lib/expression.sh
 
 #Use: cmd::where $condition
+#	Set global variables STREAM and RESULT beforehand
 function cmd::where {
+	validate "$@" STREAM RESULT
+
 	local exprss="$1"
 	
-	if is_valid_expression "$exprss"
-	then
-		echo "valid expression"
+	echo "Stream: $STREAM"
+	echo "Token: $exprss"
+
+	echo "valid expression"
+	
+	RESULT=()
+	
+	for token in "${STREAM[@]}"
+	do
+		echo "token: $token expression: $exprss"
 		
-		result=()
-		
-		for item in "${stream[@]}"
-		do
-			echo "item: $item expression: $exprss"
-			
-			if evaluate_expression "$item" "$exprss"
-			then
-				echo "expression satisfied"
-				result+=("$item")
-			fi
-		done
-	fi
+		if evaluate_expression "$token" "$exprss"
+		then
+			echo "expression satisfied"
+			RESULT+=("$token")
+		fi
+	done
 }
 
 # echo "This is where"
+
+# STREAM=("Hello World" " abc")
+# RESULT=()
 # cmd::where "$1"
 
 # unset QRY_HOME
 
 # echo "filtered items:"
-# for item in "${result[@]}"
+# for item in "${RESULT[@]}"
 # do
 # 	echo "$item"
 # done
