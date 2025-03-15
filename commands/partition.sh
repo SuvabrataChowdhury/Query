@@ -1,5 +1,5 @@
 #!/bin/bash
 
-function cmd::partition(){
+# function cmd::partition(){
 	
-}
+# }

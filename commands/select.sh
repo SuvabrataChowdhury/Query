@@ -18,4 +18,4 @@ function cmd::select() {
 }
 
 #TODO for now take input from user later to be supplied by supervising command
-"$@"
+# "$@"
