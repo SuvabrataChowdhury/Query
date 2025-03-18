@@ -3,7 +3,8 @@
 #Usage: Used to validate from arguments
 # from_validator "$from_arg" "$delim" "result_ref"
 
-function validate {
+function from_validate {
+    # echo "From_validator args: $@"
     if [[ $# != 3 ]]
     then
         echo "For from input count should be 3"

@@ -13,8 +13,8 @@ source $QRY_HOME/commands/validators/from_validator.sh
 #	delim obtained from partition
 
 function cmd::from {
-	# echo "Args: $0 $@"
-	validate "$@"
+	# echo "From Args: $@"
+	from_validate "$@"
 		
 	local from_arg=$1
 	local delim=$2
@@ -28,11 +28,11 @@ function cmd::from {
 }
 
 #Driver code for testing
-result=""
-"$@" result
+# result=""
+# "$@" result
 
-echo "After splittiing"
-for token in "${result[@]}"
-do 
-	echo "$token"
-done
+# echo "After splittiing"
+# for token in "${result[@]}"
+# do 
+# 	echo "$token"
+# done

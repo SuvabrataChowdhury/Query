@@ -1,13 +1,16 @@
 #!/bin/bash
 
 #TODO use a filter to filter through the given stream
+#Useage:
+#	cmd::select "$condition" RESULT_STREAM
+
 function cmd::select() {
 	local selection=$1
-	local stream=$2
+	local result_ref=$2
 
 	case "$selection" in
 		'*')
-				echo "$stream"
+				echo "${!result_ref}" #change this
 				return 0
 				;;
 		*)
