@@ -10,24 +10,25 @@ source $QRY_HOME/lib/expression.sh
 #Use: cmd::where $condition
 #	Set global variables STREAM and RESULT beforehand
 function cmd::where {
-	validate "$@" STREAM RESULT
+	# echo "Where Args: $@"
+	where_validate "$@" STREAM RESULT
 
 	local exprss="$1"
 	
-	echo "Stream: $STREAM"
-	echo "Token: $exprss"
+	# echo "Stream: ${STREAM[@]}"
+	# echo "Token: $exprss"
 
-	echo "valid expression"
+	# echo "valid expression"
 	
 	RESULT=()
 	
 	for token in "${STREAM[@]}"
 	do
-		echo "token: $token expression: $exprss"
+		# echo "token: $token expression: $exprss"
 		
 		if evaluate_expression "$token" "$exprss"
 		then
-			echo "expression satisfied"
+			# echo "expression satisfied"
 			RESULT+=("$token")
 		fi
 	done
