@@ -5,11 +5,12 @@
 #	cmd::select "$condition" RESULT_STREAM
 
 function cmd::select() {
+	
 	local selection=$1
 	local result_ref=$2
 
 	case "$selection" in
-		'*')
+		"\*")
 				echo "${!result_ref}" #change this
 				return 0
 				;;
