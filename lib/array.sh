@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Usage:
+#   find_in_array $pattern reference_var_name
+
 function find_in_array {
     local pattern=$1
     local arr_ref=$2
