@@ -2,7 +2,7 @@
 
 set -e
 
-QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
+# QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
 
 source $QRY_HOME/lib/string.sh
 source $QRY_HOME/commands/validators/from_validator.sh
