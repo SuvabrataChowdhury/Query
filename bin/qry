@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
+set -e
 
 source $QRY_HOME/commands/select.sh
 source $QRY_HOME/commands/from.sh

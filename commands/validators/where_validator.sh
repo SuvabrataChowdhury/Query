@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
 source $QRY_HOME/lib/expression.sh
 
 #Usage:
