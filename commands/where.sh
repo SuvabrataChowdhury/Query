@@ -2,8 +2,6 @@
 
 #TODO: evaluate any/all expressions
 
-QRY_HOME="/Users/I578071/MiniProjects/SystemsProgramming/Query"
-
 source $QRY_HOME/commands/validators/where_validator.sh
 source $QRY_HOME/lib/expression.sh
 
