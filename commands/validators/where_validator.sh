@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source $QRY_HOME/lib/expression.sh
+source $QRY_HOME/lib/style.sh
 
 #Usage:
 #   validate tokens_ref "$expression" result_ref

@@ -18,7 +18,9 @@ function cmd::from {
 
     # echo "FromArg: $from_arg Delim: $delim Result: $result_ref"
 
-	string=$( cat "$from_arg" )
+	local files="$( echo "$from_arg" | tr "," " ")"
+
+	string=$( cat $files )
 			
 	split_string "$string" "$delim" "$result_ref"
 }
