@@ -7,7 +7,7 @@ function from_validate {
     # echo "From_validator args: $@"
     if [[ $# != 3 ]]
     then
-        echo "For from input count should be 3"
+        echo_styled "ERROR" "$FUNCNAME" "For from input count should be 3"
         exit 1;
     fi
 
@@ -26,11 +26,11 @@ function from_validate {
         then
             return 0
         else
-            echo "Invalid argument near from: check from and part arguments"
+            echo_styled "ERROR" "$FUNCNAME" "Invalid argument near from: check from and part arguments"
             exit 1
         fi
     else
-        echo "Result variable is unset exitting"
+        echo_styled "ERROR" "$FUNCNAME" "Result variable is unset exitting"
         exit 1
     fi
 }
