@@ -2,6 +2,7 @@
 
 source $QRY_HOME/lib/string.sh
 source $QRY_HOME/lib/array.sh
+source $QRY_HOME/lib/style.sh
 
 #Usage:
 #   extract_args $command [Make sure the select_args, from_args, where_args are set correctly]
@@ -40,11 +41,11 @@ function extract_args {
 
             where_args="${cmd[*]:$((where_index+1))}"
         else
-            echo "Keyword Select or From or where is missing"
+            echo_styled "ERROR" "$FUNCNAME" "Keyword Select or From or where is missing"
             exit 1
         fi
     else
-        echo "Global variables are not set correctly"
+        echo_styled "ERROR" "$FUNCNAME" "Global variables are not set correctly"
         exit 1
     fi
 }

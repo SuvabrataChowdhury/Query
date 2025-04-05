@@ -10,7 +10,7 @@ function where_validate {
 
     if [[ $# != 3 ]]
     then
-        echo "Invalid number of arguments passed to where $#"
+        echo_styled "ERROR" "$FUNCNAME" "Invalid number of arguments passed to where $#"
         exit 1
     fi
 
@@ -26,10 +26,10 @@ function where_validate {
         then
             return 0
         else
-            echo "Expression is not valid"
+            echo_styled "ERROR" "$FUNCNAME" "Expression is not valid"
         fi
     else
-        echo "Where_validator: Global variables are not set properly"
+        echo_styled "ERROR" "$FUNCNAME" "Where_validator: Global variables are not set properly"
     fi
     
     exit 1

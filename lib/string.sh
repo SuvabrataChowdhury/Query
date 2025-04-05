@@ -5,7 +5,7 @@
 function split_string {
 	if [[ $# != 3 ]]
 	then
-		echo "Wrong number of arguments passed $#"
+		echo_styled "ERROR" "$FUNCNAME" "Wrong number of arguments passed $#"
 		exit 1
 	fi
 
@@ -19,7 +19,7 @@ function split_string {
 
 		IFS="$delim" read -ra "${result_ref?}" <<< "$string"
 	else
-		echo "result reference is not set correctly"
+		echo_styled "ERROR" "$FUNCNAME" "result reference is not set correctly"
 		exit 1
 	fi
 
