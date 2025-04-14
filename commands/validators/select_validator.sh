@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $QRY_HOME/lib/var.sh
+
 #for now no use but will be used if selection criterion is implemented
 #Usage: select_validate $selection $input_stream
 function select_validate {
