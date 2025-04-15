@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#Use: split_string $string $delim result
+source $QRY_HOME/lib/style.sh
 
+#Use: split_string $string $delim result
 function split_string {
 	if [[ $# != 3 ]]
 	then
@@ -26,14 +27,35 @@ function split_string {
 	return 0
 }
 
-# ## Driver code for testing
+#Use: substring_regex $string $regex
+function substring_regex {
+	if [[ $# != 2 ]]
+	then
+		echo_styled "ERROR" "$FUNCNAME" "Wrong number of arguments passed $#"
+		exit 1
+	fi
+
+	local string="$1"
+	local regex="$2"
+
+	# echo "$string" "$regex"
+
+	# local result="$(echo "$string" | grep -oE "$regex")"
+
+	# echo "$result"
+
+	echo "$string" | grep -oE "$regex" | tr "\n" " "
+	# return 0
+}
+
+## Driver code for testing
 # result=()
 # # i
 # "$@"
 
-# # split_string "Hello World.
+# split_string "Hello World.
 
-# # abc" "." result
+# abc" "." result
 
 # for token in "${result[@]}"
 # do
