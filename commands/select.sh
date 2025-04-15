@@ -23,19 +23,7 @@ function cmd::select {
 		echo "$result"
 	done
 	
-
-	# case "$selection" in
-	# 	"\*")
-	# 			echo "${!inp_stream_ref}" #change this
-	# 			return 0
-	# 			;;
-	# 	*)
-	# 			echo "Invalid token near select"
-	# 			return 1
-	# 			;;
-	# esac
 }
 
-#TODO for now take input from user later to be supplied by supervising command
 # result=("hello world" "hello World")
 # "$@" result[@]
