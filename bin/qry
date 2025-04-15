@@ -51,4 +51,4 @@ extract_args $cmd
 
 cmd::from $from_args "STREAM"
 cmd::where "$where_args"    #STREAM --<Filter>--> RESULT
-cmd::select "$select_args" "RESULT[@]"
+cmd::select "RESULT[@]" "$select_args"
