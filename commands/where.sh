@@ -9,7 +9,13 @@ source $QRY_HOME/lib/expression.sh
 #	Set global variables STREAM and RESULT beforehand
 function cmd::where {
 	# echo "Where Args: $@"
-	where_validate "$@" STREAM RESULT
+	# # echo $#
+	# if [[ -z "$*" ]] || [[ $# -eq 0 ]]	#where clause does not exists in statement
+	# then
+	# 	return 0
+	# fi
+
+	where_validate "$@" STREAM
 
 	local exprss="$1"
 	
@@ -18,7 +24,7 @@ function cmd::where {
 
 	# echo "valid expression"
 	
-	RESULT=()
+	result=()
 	
 	for token in "${STREAM[@]}"
 	do
@@ -27,9 +33,11 @@ function cmd::where {
 		if evaluate_expression "$token" "$exprss"
 		then
 			# echo "expression satisfied"
-			RESULT+=("$token")
+			result+=("$token")
 		fi
 	done
+
+	copy_array "result" "STREAM"
 }
 
 # echo "This is where"

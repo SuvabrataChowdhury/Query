@@ -22,7 +22,6 @@ function cmd::select {
 		result="$(substring_regex "$token" "$selection")"
 		echo "$result"
 	done
-	
 }
 
 # result=("hello world" "hello World")
