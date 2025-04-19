@@ -4,12 +4,12 @@ source $QRY_HOME/lib/expression.sh
 source $QRY_HOME/lib/style.sh
 
 #Usage:
-#   validate tokens_ref "$expression" result_ref
+#   validate tokens_ref "$expression" "$stream_ref"
 
 function where_validate {
     # echo "where_validator: $@"
 
-    if [[ $# != 3 ]]
+    if [[ $# != 2 ]]
     then
         echo_styled "ERROR" "$FUNCNAME" "Invalid number of arguments passed to where $#"
         exit 1
@@ -17,11 +17,11 @@ function where_validate {
 
     local exprss="$1"
     local stream_ref="$2"
-    local result_ref="$3"
+    # local result_ref="$3"
 
     # echo "$exprss"
 
-    if declare -p "$result_ref" &>/dev/null && declare -p "$stream_ref" &>/dev/null
+    if declare -p "$stream_ref" &>/dev/null
     then
         if is_valid_expression "$exprss"
         then

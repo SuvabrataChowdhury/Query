@@ -9,13 +9,13 @@ source $QRY_HOME/lib/expression.sh
 #	Set global variables STREAM and RESULT beforehand
 function cmd::where {
 	# echo "Where Args: $@"
-	# echo $#
-	if [[ -z "$*" ]] || [[ $# -eq 0 ]]	#where clause does not exists in statement
-	then
-		return 0
-	fi
+	# # echo $#
+	# if [[ -z "$*" ]] || [[ $# -eq 0 ]]	#where clause does not exists in statement
+	# then
+	# 	return 0
+	# fi
 
-	where_validate "$@" STREAM RESULT
+	where_validate "$@" STREAM
 
 	local exprss="$1"
 	
