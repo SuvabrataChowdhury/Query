@@ -30,16 +30,24 @@ function extract_args {
         local from_index=$(find_in_array "$from_pattern" "cmd[@]")
         local where_index=$(find_in_array "$where_pattern" "cmd[@]")
 
-        if [[ $select_index -ge 0 ]] && [[ $from_index -ge 0 ]] && [[ $where_index -ge 0 ]]
+        if [[ $select_index -ge 0 ]] && [[ $from_index -ge 0 ]]
         then
 
             local offset=$((from_index-select_index))
             select_args="${cmd[*]:$((select_index+1)):$((offset-1))}"
 
-            offset=$((where_index-from_index))
-            from_args="${cmd[*]:$((from_index+1)):$((offset-1))}"
+            if [[ $where_index -ne -1 ]]
+            then
+                where_args="${cmd[*]:$((where_index+1))}"
 
-            where_args="${cmd[*]:$((where_index+1))}"
+                offset=$((where_index-from_index))
+                from_args="${cmd[*]:$((from_index+1)):$((offset-1))}"
+            else
+                where_args=""
+                from_args="${cmd[*]:$((from_index+1))}"
+            fi
+
+            # where_args="${cmd[*]:$((where_index+1))}"
         else
             echo_styled "ERROR" "$FUNCNAME" "Keyword Select or From or where is missing"
             exit 1
