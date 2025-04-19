@@ -46,10 +46,9 @@ function extract_args {
                 where_args=""
                 from_args="${cmd[*]:$((from_index+1))}"
             fi
-
-            # where_args="${cmd[*]:$((where_index+1))}"
+            
         else
-            echo_styled "ERROR" "$FUNCNAME" "Keyword Select or From or where is missing"
+            echo_styled "ERROR" "$FUNCNAME" "Keyword Select or From or both are missing"
             exit 1
         fi
     else
